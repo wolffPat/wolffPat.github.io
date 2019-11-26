@@ -1,0 +1,204 @@
+<!doctype html>
+<html>
+<head>
+<title>Luke</title>
+<meta charset="utf-8">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+<!-- Material Design Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.11/css/mdb.min.css" rel="stylesheet">
+<!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.11/js/mdb.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="./parallax.js-1.5.0/parallax.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+</head>
+<body>
+<h1><a href="luke%20writeup.txt">Raw Text File</a></h1>
+<p>
+    
+TYPICAL TCP PORT SCAN<br>
+{<br>
+root@kali:~# nmap victim<br>
+Starting Nmap 7.70 ( https://nmap.org ) at 2019-07-24 16:16 EDT<br>
+Nmap scan report for victim (10.10.10.137)<br>
+Host is up (0.034s latency).<br>
+Not shown: 995 closed ports<br>
+PORT     STATE SERVICE<br>
+21/tcp   open  ftp<br>
+22/tcp   open  ssh<br>
+80/tcp   open  http<br>
+3000/tcp open  ppp<br>
+8000/tcp open  http-alt<br>
+<br>
+Nmap done: 1 IP address (1 host up) scanned in 7.10 seconds<br>
+root@kali:~# <br>
+<br>
+}//end TYPICAL TCP PORTSCAN<br>
+<br>
+SERVICE SCAN ON PORT 21 (ftp)<br>
+{<br>
+root@kali:~# nmap -sV -p 21 victim<br>
+Starting Nmap 7.70 ( https://nmap.org ) at 2019-07-24 16:18 EDT<br>
+Nmap scan report for victim (10.10.10.137)<br>
+Host is up (0.034s latency).<br>
+<br>
+PORT   STATE SERVICE VERSION<br>
+21/tcp open  ftp     vsftpd 3.0.3+ (ext.1)<br>
+<br>
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .<br>
+Nmap done: 1 IP address (1 host up) scanned in 0.88 seconds<br>
+}//end SERVICE SCAN ON PORT 21<br>
+<br>
+FULL PORT SERVICE SCANnet<br>
+{<br>
+PORT     STATE SERVICE  VERSION<br>
+21/tcp   open  ftp      vsftpd 3.0.3+ (ext.1)<br>
+22/tcp   open  ssh?<br>
+80/tcp   open  http     Apache httpd 2.4.38 ((FreeBSD) PHP/7.3.3)<br>
+3000/tcp open  http     Node.js Express framework<br>
+8000/tcp open  http-alt<br>
+}//end FULL PORT SERVICE SCAN<br>
+<br>
+BOOTSTRAP VERSION #<br>
+{<br>
+Bootstrap v4.2.1 (https://getbootstrap.com/)victim.com/vendor/boostrap<br>
+<br>
+ALSO RUNNING VERSION <br>
+Bootstrap v3.3.7 (http://getbootstrap.com) victim.com/css<br>
+	THERE IS A POSSIBLE VUNERABILITY HERE<br>
+	https://snyk.io/test/npm/bootstrap/3.3.7 <br>
+}//end bootstrap version #<br>
+<br>
+POSSIBLY IMPORTANT MAYBE DB PASS<br>
+{<br>
+FOUND IN 10.10.10.137/config.php<br>
+$dbHost = 'localhost'; $dbUsername = 'root'; $dbPassword = 'Zk6heYCyv6ZE9Xcg'; $db = "login"; $conn = new mysqli($dbHost, $dbUsername, $dbPassword,$db) or die("Connect failed: %s\n". $conn -> error);<br>
+}//END POTENTIALLY IMPORT DB PASS<br>
+AUTH TOKEN<br>
+{<br>
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNTY0MDgxMjA1LCJleHAiOjE1NjQxNjc2MDV9.vOX08KXlkzYN__Kw6phyMiw4x6DhmLcNCKLe4Gvkrj8<br>
+}//END AUTH TOKEN<br>
+<br>
+victim.com:3000/users<br>
+{<br>
+	<br>
+0	<br>
+ID	"1"<br>
+name	"Admin"<br>
+Role	"Superuser"<br>
+1	<br>
+ID	"2"<br>
+name	"Derry"<br>
+Role	"Web Admin"<br>
+2	<br>
+ID	"3"<br>
+name	"Yuri"<br>
+Role	"Beta Tester"<br>
+3	<br>
+ID	"4"<br>
+name	"Dory"<br>
+Role	"Supporter"<br>
+}//END USERS<br>
+<br>
+POSSIBLE PASS in victim.com:3000/users/admin<br>
+{<br>
+HTTP/1.1 200 OK<br>
+<br>
+X-Powered-By: Express<br>
+<br>
+Content-Type: application/json; charset=utf-8<br>
+<br>
+Content-Length: 45<br>
+<br>
+ETag: W/"2d-6LfOUjcs63Zey9NM+wGG+B6F0ts"<br>
+<br>
+Date: Thu, 25 Jul 2019 19:10:59 GMT<br>
+<br>
+Connection: close<br>
+<br>
+
+{"name":"Admin","password":"WX5b7)>/rp$U)FW"}<br>
+<br>
+}//END ADMIN<br>
+<br>
+VICTIM.COM:3000/USERS/DERRY<br>
+{<br>
+HTTP/1.1 200 OK<br>
+<br>
+X-Powered-By: Express<br>
+<br>
+Content-Type: application/json; charset=utf-8<br>
+<br>
+Content-Length: 46<br>
+<br>
+ETag: W/"2e-sgpTWo5Mzwc9YEHFtNldZwP3qII"<br>
+<br>
+Date: Thu, 25 Jul 2019 19:15:18 GMT<br>
+<br>
+Connection: close<br>
+<br>
+{"name":"Derry","password": "rZ86wwLvx7jUxtch"}<br>
+}//END DERRY<br>
+<br>
+VICTIM.COM:3000/USERS/DORY<br>
+{<br>
+HTTP/1.1 200 OK<br>
+<br>
+X-Powered-By: Express<br>
+<br>
+Content-Type: application/json; charset=utf-8<br>
+<br>
+Content-Length: 44<br>
+<br>
+ETag: W/"2c-QVJ354QI7/P9wWVh97w4YNw3O+g"<br>
+<br>
+Date: Thu, 25 Jul 2019 19:17:59 GMT<br>
+<br>
+Connection: close<br>
+<br>
+{"name":"Dory","password":" D "}<br>
+}//end DORY<br>
+
+<br>
+VICTIM.COM:3000/users/Yuri<br>
+{<br>
+HTTP/1.1 200 OK<br>
+<br>
+X-Powered-By: Express<br>
+<br>
+Content-Type: application/json; charset=utf-8<br>
+<br>
+Content-Length: 41<br>
+<br>
+ETag: W/"29-mSBdfTKaglwQWJ9faJ1HRSb6D30"<br>
+<br>
+Date: Thu, 25 Jul 2019 19:18:41 GMT<br>
+<br>
+Connection: close<br>
+<br>
+{"name":"Yuri","password":"bet@tester87"}<br>
+}//end YURI<br>
+<br>
+CONFIRMED AJENTI LOGIN CREDS AJENTI PASS<br>
+{<br>
+USER: root<br>
+PASS: KpMasng6S5EtTy9Z<br>
+}<br>
+
+
+
+</p>
+</body>
+</html>
+
+

@@ -1,0 +1,163 @@
+<!doctype html>
+<html>
+
+<head>
+<title>Bastion</title>
+<meta charset="utf-8">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+<!-- Material Design Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.11/css/mdb.min.css" rel="stylesheet">
+<!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.11/js/mdb.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="./parallax.js-1.5.0/parallax.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+</head>
+<body>
+<h1><a href="Bastion%20writeup.txt">Raw Text File</a></h1>
+<p>
+NMAP OF VICTIM<br>
+{<br>
+nmap victim<br>
+Starting Nmap 7.70 ( https://nmap.org ) at 2019-07-25 15:57 EDT<br>
+Nmap scan report for victim (10.10.10.134)<br>
+Host is up (0.038s latency).<br>
+rDNS record for 10.10.10.134: victim.com<br>
+Not shown: 996 closed ports<br>
+PORT    STATE SERVICE<br>
+22/tcp  open  ssh<br>
+135/tcp open  msrpc<br>
+139/tcp open  netbios-ssn<br>
+445/tcp open  microsoft-ds<br>
+<br>
+Nmap done: 1 IP address (1 host up) scanned in 0.92 seconds<br>
+}//end nmap reg scan<br>
+<br>
+NMAP ALL PORTS<br>
+{<br>
+nmap -p- -T4 victim<br>
+Starting Nmap 7.70 ( https://nmap.org ) at 2019-07-25 16:00 EDT<br>
+Nmap scan report for victim (10.10.10.134)<br>
+Host is up (0.036s latency).<br>
+rDNS record for 10.10.10.134: victim.com<br>
+Not shown: 65522 closed ports<br>
+PORT      STATE SERVICE<br>
+22/tcp    open  ssh<br>
+135/tcp   open  msrpc<br>
+139/tnmapcp   open  netbios-ssn<br>
+445/tcp   open  microsoft-ds<br>
+5985/tcp  open  wsman<br>
+47001/tcp open  winrm<br>
+49664/tcp open  unknown<br>
+49665/tcp open  unknown<br>
+49666/tcp open  unknown<br>
+49667/tcp open  unknown<br>
+49668/tcp open  unknown<br>
+49669/tcp open  unknown<br>
+49670/tcp open  unknown<br>
+<br>
+Nmap done: 1 IP address (1 host up) scanned in 26.78 seconds<br>
+}//end all ports scan<br>
+<br>
+
+NMAP SERVICE SCAN ON PORT 5985<br>
+{<br>
+nmap -sV -p 5985 victim<br>
+Starting Nmap 7.70 ( https://nmap.org ) at 2019-07-25 16:02 EDT<br>
+Nmap scan report for victim (10.10.10.134)<br>
+Host is up (0.036s latency).<br>
+rDNS record for 10.10.10.134: victim.com<br>
+<br>
+PORT     STATE SERVICE VERSION<br>
+5985/tcp open  http    Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)<br>
+Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows<br>
+<br>
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/<br>
+Nmap done: 1 IP address (1 host up) scanned in 7.10 seconds<br>
+}//end service scan on port 5985<br>
+<br>
+NMAP SERVICE SCAN ON PORT 47001<br>
+{<br>
+nmap -sV -p 47001 victim<br>
+Starting Nmap 7.70 ( https://nmap.org ) at 2019-07-25 16:05 EDT<br>
+Nmap scan report for victim (10.10.10.134)<br>
+Host is up (0.057s latency).<br>
+rDNS record for 10.10.10.134: victim.com<br>
+<br>
+PORT      STATE SERVICE VERSION<br>
+47001/tcp open  http    Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)<br>
+Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows<br>
+<br>
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/<br>
+Nmap done: 1 IP address (1 host up) scanned in 12.94 seconds<br>
+}//end service scan<br>
+<br>
+NMAP SERVICE SCAN ON PORT 49670<br>
+{<br>
+nmap -sV -p 49670 victim
+Starting Nmap 7.70 ( https://nmap.org ) at 2019-07-25 16:06 EDT<br>
+Nmap scan report for victim (10.10.10.134)<br>
+Host is up (0.14s latency).<br>
+rDNS record for 10.10.10.134: victim.com<br>
+<br>
+PORT      STATE SERVICE VERSION<br>
+49670/tcp open  msrpc   Microsoft Windows RPC<br>
+Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows<br>
+<br>
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/<br>
+Nmap done: 1 IP address (1 host up) scanned in 55.43 seconds<br>
+}//end service scan on port 49670<br>
+<br>
+NMAP SCAN ON PORTS 49664-49670<br>
+{<br>
+nmap -sV -p 49670,49669,49668,49667,49666,49665,49664 victim<br>
+Starting Nmap 7.70 ( https://nmap.org ) at 2019-07-25 16:11 EDT<br>
+Nmap scan report for victim (10.10.10.134)<br>
+Host is up (0.041s latency).<br>
+rDNS record for 10.10.10.134: victim.com<br>
+<br>
+PORT      STATE SERVICE VERSION<br>
+49664/tcp open  msrpc   Microsoft Windows RPC<br>
+49665/tcp open  msrpc   Microsoft Windows RPC<br>
+49666/tcp open  msrpc   Microsoft Windows RPC<br>
+49667/tcp open  msrpc   Microsoft Windows RPC<br>
+49668/tcp open  msrpc   Microsoft Windows RPC<br>
+49669/tcp open  msrpc   Microsoft Windows RPC<br>
+49670/tcp open  msrpc   Microsoft Windows RPC<br>
+Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows<br>
+<br>
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ <br>
+Nmap done: 1 IP address (1 host up) scanned in 55.62 seconds<br>
+}//end port scan on 49664-49670<br>
+<br>
+HOW TO VIEW SMB FILESrrnm<br>
+{<br>
+Pull up explorer in Linux.........smb://ipaddress<br>
+}<br>
+<br>
+MOUNT COMMAND TO MOUNT VHkcirtap12zdx<br>
+{<br>
+guestmount --add /root/Desktop/9b9cfbc3-369e-11e9-a17c-806e6f6e6963.vhd --inspector  /mnt/remote -v<br>
+}<br>
+<br>
+SSH LOGIN<br>
+{<br>
+ssh L4mpje@10.10.10.134<br>
+PASS: bureaulampje<br>
+}<br>
+</p>
+</body>
+</html>
+
+
+

